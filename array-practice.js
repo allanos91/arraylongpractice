@@ -64,10 +64,20 @@ const secondLargest = arr => { //time O(n^2),
   return Math.max(...arr)
 };
 
-const shuffle = (arr) => {
 
-  // Your code here
+const shuffle = (arr) => {
+  let shuffled = []
+  let placeHolder = Math.random() // 0.9
+  let randIndex = Math.round(Math.floor(arr.length * placeHolder)) //arr.length = 1,
+  if (!arr.length) {
+    return shuffled;
+  }
+  shuffled.push(arr[randIndex])
+  arr.splice(randIndex, 1);
+  // console.log(arr)
+  return shuffle(arr).concat(...shuffled);
 };
 
+console.log(shuffle([0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
 
 module.exports = [findMinimum, runningSum, evenNumOfChars, smallerThanCurr, twoSum, secondLargest, shuffle];
